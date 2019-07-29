@@ -1,6 +1,6 @@
 # robobo-gazebo-simulator
 
-Repository for Robobo robot simulation in gazebo environment.
+Repository for Robobo robot simulation in the Gazebo environment.
 
 ## Requirements
 
