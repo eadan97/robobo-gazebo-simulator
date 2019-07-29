@@ -44,7 +44,7 @@ Topics availables:
 * /\<modelName\>/camera/image/compressed
 * /\<modelName\>/irs
 * /\<modelName\>/orientation
-* /v<modelName\>/pan
+* /\<modelName\>/pan
 * /\<modelName\>/tilt
 * /\<modelName\>/wheels
 
