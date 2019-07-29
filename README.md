@@ -23,7 +23,7 @@ $ catkin_make
 
 ## Basic Use
 
-You must do the first twos steps in each new terminal you need to use the model:
+You must do the first two steps in each new terminal you need to use the model:
 
 ```bash
 $ cd <catkin_ws>/src
