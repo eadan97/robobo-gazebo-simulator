@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="72631bec-ec57-477a-974a-5b1b3ef40b17" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/move_pan_tilt.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="329">
+              <caret line="62" column="109" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="109" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/encoders.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1770">
+              <caret line="118" column="105" selection-start-line="118" selection-start-column="105" selection-end-line="118" selection-end-column="105" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/infrared_range.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="765">
+              <caret line="51" column="37" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/robobo_imu_sensor.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3420">
+              <caret line="228" column="3" selection-start-line="228" selection-start-column="3" selection-end-line="228" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/robobo_camera.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1110">
+              <caret line="74" column="41" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/move_wheels.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1200">
+              <caret line="80" column="19" selection-start-line="80" selection-start-column="19" selection-end-line="80" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>imu_msg</find>
+      <find>float64</find>
+      <find>thread</find>
+      <find>rosqueue</find>
+      <find>updateCo</find>
+      <find>itnode</find>
+      <find>panPos</find>
+      <find>tiltPos</find>
+      <find>pp</find>
+      <find>tp</find>
+      <find>image_topic_name</find>
+      <find>frame_name</find>
+      <find>updateConnection</find>
+      <find>nodeHandle</find>
+      <find>robot_namespace</find>
+      <find>connection.reset</find>
+      <find>callback_queue_thread_.join()</find>
+      <find>join()</find>
+      <find>clear</find>
+      <find>this-&gt;parentSensor_-&gt;SetActive(false)</find>
+      <find>this-&gt;rosnode_-&gt;shutdown()</find>
+      <find>join</find>
+      <find>clear()</find>
+      <find>range_queue</find>
+      <find>callback</find>
+      <find>rosnode_</find>
+      <find>rosnode</find>
+      <find>joint</find>
+      <find>exception</find>
+      <find>connection</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>InfraredRange</replace>
+      <replace>8.48</replace>
+      <replace>pan</replace>
+      <replace>left</replace>
+      <replace>right</replace>
+      <replace>req.lspeed</replace>
+      <replace>rp</replace>
+      <replace>panPos</replace>
+      <replace>difPan</replace>
+      <replace>MovePanTilt</replace>
+      <replace>tilt_motor</replace>
+      <replace>tilt</replace>
+      <replace>tp</replace>
+      <replace>this-&gt;lwp</replace>
+      <replace>abs(this-&gt;lwp)</replace>
+      <replace>abs(this-&gt;rwp)</replace>
+      <replace>this-&gt;time</replace>
+      <replace>this-&gt;rwp</replace>
+      <replace>MoveWheels</replace>
+      <replace>_msg-&gt;</replace>
+      <replace>time</replace>
+      <replace>lwp</replace>
+      <replace>rwp</replace>
+      <replace>orient_msg</replace>
+      <replace>Robobo</replace>
+      <replace>accel_msg</replace>
+      <replace>this-&gt;panPos</replace>
+      <replace>this-&gt;tiltPos</replace>
+      <replace>this-&gt;pp</replace>
+      <replace>this-&gt;tp</replace>
+    </replaceStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/right_motor_controller" />
+        <option value="$PROJECT_DIR$/right_motor_controller.cpp" />
+        <option value="$PROJECT_DIR$/pan_motor_controller.cpp" />
+        <option value="$PROJECT_DIR$/tilt_motor_controller.cpp" />
+        <option value="$PROJECT_DIR$/left_motor_controller.cpp" />
+        <option value="$PROJECT_DIR$/plugin_test.cpp" />
+        <option value="$PROJECT_DIR$/encoder.cpp" />
+        <option value="$PROJECT_DIR$/IR_sensors.cpp" />
+        <option value="$PROJECT_DIR$/gazebo_ros_range.cpp" />
+        <option value="$PROJECT_DIR$/remendo.cpp" />
+        <option value="$PROJECT_DIR$/pruebas.cpp" />
+        <option value="$PROJECT_DIR$/left_wheel_motor.cpp" />
+        <option value="$PROJECT_DIR$/right_wheel_motor.cpp" />
+        <option value="$PROJECT_DIR$/tilt_motor.cpp" />
+        <option value="$PROJECT_DIR$/pan_motor.cpp" />
+        <option value="$PROJECT_DIR$/robobo_camera2.cpp" />
+        <option value="$PROJECT_DIR$/robobo_camera.cpp" />
+        <option value="$PROJECT_DIR$/robobo_imu.cpp" />
+        <option value="$PROJECT_DIR$/robobo_imu_sensor.cpp" />
+        <option value="$PROJECT_DIR$/robobo_camera_utils.cpp" />
+        <option value="$PROJECT_DIR$/infrared_range.cpp" />
+        <option value="$PROJECT_DIR$/move_wheels.cpp" />
+        <option value="$PROJECT_DIR$/move_pan_tilt.cpp" />
+        <option value="$PROJECT_DIR$/encoders.cpp" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="65" />
+    <option name="y" value="-4" />
+    <option name="width" value="1301" />
+    <option name="height" value="772" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="plugins" type="b2602c69:ProjectViewProjectNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="72631bec-ec57-477a-974a-5b1b3ef40b17" name="Default Changelist" comment="" />
+      <created>1555500080179</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1555500080179</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="64" y="-4" width="1303" height="773" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10485133" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32948583" />
+      <window_info anchor="bottom" id="Python Console" order="9" side_tool="true" weight="0.32935917" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32970452" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.104899496" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32948583" />
+      <window_info anchor="bottom" id="Python Console" order="9" side_tool="true" weight="0.32935917" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32970452" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/plugin_test.cpp" />
+    <entry file="file://$PROJECT_DIR$/remendo.cpp" />
+    <entry file="file://$PROJECT_DIR$/pruebas.cpp" />
+    <entry file="file://$PROJECT_DIR$/../src/robobo/robobo_topics_services.py" />
+    <entry file="file://$PROJECT_DIR$/left_wheel_motor.cpp" />
+    <entry file="file://$PROJECT_DIR$/IR_sensors.cpp" />
+    <entry file="file://$PROJECT_DIR$/right_wheel_motor.cpp" />
+    <entry file="file://$PROJECT_DIR$/tilt_motor.cpp" />
+    <entry file="file://$PROJECT_DIR$/pan_motor.cpp" />
+    <entry file="file://$PROJECT_DIR$/descartados/pan_motor.cpp" />
+    <entry file="file://$PROJECT_DIR$/robobo_camera_utils.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1260">
+          <caret line="84" column="38" selection-start-line="84" selection-start-column="38" selection-end-line="84" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrared_range.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="51" column="37" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robobo_imu_sensor.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3420">
+          <caret line="228" column="3" selection-start-line="228" selection-start-column="3" selection-end-line="228" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robobo_camera.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1110">
+          <caret line="74" column="41" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/move_wheels.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1200">
+          <caret line="80" column="19" selection-start-line="80" selection-start-column="19" selection-end-line="80" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/move_pan_tilt.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="62" column="109" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/encoders.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1770">
+          <caret line="118" column="105" selection-start-line="118" selection-start-column="105" selection-end-line="118" selection-end-column="105" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
