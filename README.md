@@ -36,7 +36,7 @@ To launch the model:
 $ roslaunch robobo_gazebo robobo.launch
 ```
 
-To interact with the model you have the following ROS topics and services. These are the same as used in the real Robobo, there is more information here: https://github.com/mintforpeople/robobo-programming/wiki/ROS.
+To interact with the model you have the following ROS topics and services. They are the same ones used in the real Robobo, there is more information here: https://github.com/mintforpeople/robobo-programming/wiki/ROS.
 
 Topics availables:
 * /\<modelName\>/accel
