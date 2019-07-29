@@ -21,7 +21,7 @@ $ git clone https://github.com/mintforpeople/robobo-ros-msgs/tree/master/robobo_
 $ catkin_make
 ```
 
-## Basic Use
+## Basic Usage
 
 You must do the first two steps in each new terminal you need to use the model:
 
