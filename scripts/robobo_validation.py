@@ -1,30 +1,12 @@
 #!/usr/bin/env python
 
-# /*******************************************************************************
-#  *
-#  *   Copyright 2019, Manufactura de Ingenios Tecnológicos S.L. 
-#  *   <http://www.mintforpeople.com>
-#  *
-#  *   Redistribution, modification and use of this software are permitted under
-#  *   terms of the Apache 2.0 License.
-#  *
-#  *   This software is distributed in the hope that it will be useful,
-#  *   but WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND; without even the implied
-#  *   warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-#  *   Apache 2.0 License for more details.
-#  *
-#  *   You should have received a copy of the Apache 2.0 License along with    
-#  *   this software. If not, see <http://www.apache.org/licenses/>.
-#  *
-#  ******************************************************************************/
-
 import time as delay
+
 # ROS libraries
 import rospy
 
 # ROS messages
 from std_msgs.msg import Int32, Int16, Int8
-# from sensor_msgs.msg import Range
 from robobo_msgs.msg import IRs
 from robobo_msgs.srv import MoveWheels, MovePanTilt
 from random import randint
@@ -36,7 +18,13 @@ class ROBOBO_VALIDATION(object):
     def __init__(self, robobo_name='robot'):
 
         self.robobo_name = robobo_name
-
+        # The real Robobo infrared sensors do not publish before a change so it is necessary to initialize the variables
+        self.FrontC = 0
+        self.FrontLL = 0
+        self.FrontRR = 0
+        self.BackC = 0
+        self.BackL = 0
+        self.BackR = 0
         # Initializes and cleanup ROS node
         rospy.init_node('RoboboValidation', anonymous=True)
         # ROS subscribers
