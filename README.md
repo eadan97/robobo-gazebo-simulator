@@ -39,19 +39,19 @@ $ roslaunch robobo_gazebo robobo.launch
 To interact with the model you have the following ROS topics and services. These are the same as used in the real Robobo, there is more information here: https://github.com/mintforpeople/robobo-programming/wiki/ROS.
 
 Topics availables:
-* /<modelName>/accel
-* /<modelName>/camera/camera_info
-* /<modelName>/camera/image/compressed
-* /<modelName>/irs
-* /<modelName>/orientation
-* /<modelName>/pan
-* /<modelName>/tilt
-* /<modelName>/wheels
+* /\<modelName\>/accel
+* /\<modelName\>/camera/camera_info
+* /\<modelName\>/camera/image/compressed
+* /\<modelName\>/irs
+* /\<modelName\>/orientation
+* /v<modelName\>/pan
+* /\<modelName\>/tilt
+* /\<modelName\>/wheels
 
 Services availables:
-* /<modelName>/movewheels
-* /<modelName>/resetWheels
-* /<modelName>/movePanTilt
+* /\<modelName>\/movewheels
+* /\<modelName>\/resetWheels
+* /\<modelName>\/movePanTilt
 
 <modelName> is robot by default but it can be changed for other name in the launch file.
 
