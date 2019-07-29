@@ -55,6 +55,10 @@ Services availables:
 
 <modelName> is robot by default but it can be changed for other name in the launch file.
 
+## Remark
+This package include one node in python with the function of publishing all infrared sensor values in only one topic. This program reads all topics published by plugin infrared_range.cpp in each  ray sensor of the model and brings them all together in one topic, like in the real Robobo.
+
+
 ## License
 
 robobo-gazebo-simulator is available under the Apache 2.0 license. See the LICENSE file for more info.
