@@ -8,15 +8,21 @@
 	</include>
 
 	<!-- You can spawn your own model here -->
-	<node name="robot" pkg="gazebo_ros" type="spawn_model" args="-file $(find robobo_gazebo)/models/robobo/model.sdf -sdf -x 0.0 -y -0.0 -z 0.0 -Y -3.14159 -model robot" />
-	<arg name="robobo_name" default="robot"/>
-	<node name="robot_irs" pkg="robobo_gazebo" type="robobo_irs" args="-n $(arg robobo_name)"/>
+	<group ns="robobo1">
+		<param name="tf_prefix" value="robobo1_tf" />
+		<arg name="robobo_name" default="robobo1"/>
+		<node name="robobo_model" pkg="gazebo_ros" type="spawn_model" args="-file $(find robobo_gazebo)/models/robobo/model.sdf -sdf -x 0.0 -y -0.0 -z 0.0 -Y -3.14159 -model $(arg robobo_name)" />
+		<node name="robobo_irs" pkg="robobo_gazebo" type="robobo_irs" args="-n $(arg robobo_name)"/>
+	</group>
 
 	<!-- You can spawn another model here -->
-<!--	<node name="robobo2" pkg="gazebo_ros" type="spawn_model" args="-file $(find robobo_gazebo)/models/robobo/model.sdf -sdf -x 1.0 -y -0.0 -z 0.0 -Y 3.14159 -model robobo2" />
-	<arg name="robobo_name2" default="robobo2"/>
-	<node name="robobo2_irs" pkg="robobo_gazebo" type="robobo_irs" args="-n $(arg robobo_name2)"/>
--->
+	<group ns="robobo2">
+		<param name="tf_prefix" value="robobo2_tf" />
+		<arg name="robobo_name" default="robobo2"/>
+		<node name="robobo_model" pkg="gazebo_ros" type="spawn_model" args="-file $(find robobo_gazebo)/models/robobo/model.sdf -sdf -x 1.0 -y -0.0 -z 0.0 -Y 3.14159 -model $(arg robobo_name)" />
+		<node name="robobo_irs" pkg="robobo_gazebo" type="robobo_irs" args="-n $(arg robobo_name)"/>
+	</group>
+
 	
 </launch>
 

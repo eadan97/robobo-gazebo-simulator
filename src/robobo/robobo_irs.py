@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+# -*- coding: utf-8 -*- 
 # /*******************************************************************************
 #  *
 #  *   Copyright 2019, Manufactura de Ingenios Tecnológicos S.L. 
@@ -43,17 +43,17 @@ class ROBOBO_IRS(object):
         rospy.init_node('RoboboIRS', anonymous=True)
         # ROS publishers
         # IRs
-        self.irs_pub = rospy.Publisher(str(self.robobo_name) + '/irs', IRs, queue_size=1)
+        self.irs_pub = rospy.Publisher('robot/irs', IRs, queue_size=1)
 
         # ROS Subscribers
-        rospy.Subscriber(str(self.robobo_name) + '/front_c', Range, self.irs_cb, 'front_c')
-        rospy.Subscriber(str(self.robobo_name) + '/front_l', Range, self.irs_cb, 'front_l')
-        rospy.Subscriber(str(self.robobo_name) + '/front_ll', Range, self.irs_cb, 'front_ll')
-        rospy.Subscriber(str(self.robobo_name) + '/front_r', Range, self.irs_cb, 'front_r')
-        rospy.Subscriber(str(self.robobo_name) + '/front_rr', Range, self.irs_cb, 'front_rr')
-        rospy.Subscriber(str(self.robobo_name) + '/back_c', Range, self.irs_cb, 'back_c')
-        rospy.Subscriber(str(self.robobo_name) + '/back_l', Range, self.irs_cb, 'back_l')
-        rospy.Subscriber(str(self.robobo_name) + '/back_r', Range, self.irs_cb, 'back_r')
+        rospy.Subscriber('robot/front_c', Range, self.irs_cb, 'front_c')
+        rospy.Subscriber('robot/front_l', Range, self.irs_cb, 'front_l')
+        rospy.Subscriber('robot/front_ll', Range, self.irs_cb, 'front_ll')
+        rospy.Subscriber('robot/front_r', Range, self.irs_cb, 'front_r')
+        rospy.Subscriber('robot/front_rr', Range, self.irs_cb, 'front_rr')
+        rospy.Subscriber('robot/back_c', Range, self.irs_cb, 'back_c')
+        rospy.Subscriber('robot/back_l', Range, self.irs_cb, 'back_l')
+        rospy.Subscriber('robot/back_r', Range, self.irs_cb, 'back_r')
 
     def irs_cb(self, value, id):
         self.irs_dict[id] = value

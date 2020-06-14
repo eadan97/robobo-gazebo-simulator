@@ -34,117 +34,128 @@
 
 /** \author Jose Capriles. */
 
-/*
-*Modified by David Casal
-*2019
-*/
-
 #ifndef INFRARED_RANGE_H
 #define INFRARED_RANGE_H
 
+#include <assert.h>
+#include <ros/advertise_options.h>
+#include <ros/callback_queue.h>
+#include <ros/ros.h>
+#include <sensor_msgs/Range.h>
+#include <tf/tf.h>
 
-#include <string>
-
+#include <algorithm>
 #include <boost/bind.hpp>
 #include <boost/thread.hpp>
 #include <boost/thread/mutex.hpp>
-
-#include <ros/ros.h>
-#include <ros/callback_queue.h>
-#include <ros/advertise_options.h>
-#include <sensor_msgs/Range.h>
-
-#include <gazebo/physics/physics.hh>
-#include <gazebo/transport/TransportTypes.hh>
-#include <gazebo/msgs/MessageTypes.hh>
-#include <gazebo/common/Time.hh>
-#include <gazebo/common/Plugin.hh>
 #include <gazebo/common/Events.hh>
-#include <gazebo/sensors/SensorTypes.hh>
+#include <gazebo/common/Exception.hh>
+#include <gazebo/common/Plugin.hh>
+#include <gazebo/common/Time.hh>
+#include <gazebo/msgs/MessageTypes.hh>
+#include <gazebo/physics/HingeJoint.hh>
+#include <gazebo/physics/World.hh>
+#include <gazebo/physics/physics.hh>
 #include <gazebo/plugins/RayPlugin.hh>
-
+#include <gazebo/sensors/RaySensor.hh>
+#include <gazebo/sensors/Sensor.hh>
+#include <gazebo/sensors/SensorTypes.hh>
+#include <gazebo/transport/TransportTypes.hh>
 #include <sdf/Param.hh>
+#include <sdf/sdf.hh>
+#include <string>
 
 namespace gazebo
 {
-
 class InfraredRange : public RayPlugin
 {
+public:
+  /// \brief Constructor
+  InfraredRange();
 
-    /// \brief Constructor
-    public: InfraredRange();
+  /// \brief Destructor
+  ~InfraredRange();
 
-    /// \brief Destructor
-    public: ~InfraredRange();
+  /// \brief Load the plugin
+  void Load(sensors::SensorPtr _parent, sdf::ElementPtr _sdf);
 
-    /// \brief Load the plugin
-    /// \param take in SDF root element
-    public: void Load(sensors::SensorPtr _parent, sdf::ElementPtr _sdf);
+protected:
+  /// \brief Update the controller
+  virtual void OnNewLaserScans();
 
-    /// \brief Update the controller
-    protected: virtual void OnNewLaserScans();
+private:
+  /// \brief Put range data to the ROS topic
+  void PutRangeData(common::Time& _updateTime);
 
-    /// \brief Put range data to the ROS topic
-    private: void PutRangeData(common::Time &_updateTime);
+  /// \brief Keep track of number of connctions
+  int range_connect_count_;
 
-    /// \brief Keep track of number of connctions
-    private: int range_connect_count_;
-    private: void RangeConnect();
-    private: void RangeDisconnect();
+  void RangeConnect();
 
-    // Pointer to the model
-    private: physics::WorldPtr world_;
-    /// \brief The parent sensor
-    private: sensors::SensorPtr parent_sensor_;
-    private: sensors::RaySensorPtr parent_ray_sensor_;
+  void RangeDisconnect();
 
-    /// \brief pointer to ros node
-    private: ros::NodeHandle* rosnode_;
-    private: ros::Publisher pub_;
+  // Pointer to the model
+  physics::WorldPtr world_;
+  /// \brief The parent sensor
+  sensors::SensorPtr parent_sensor_;
 
-    /// \brief ros message
-    private: sensor_msgs::Range range_msg_;
+  sensors::RaySensorPtr parent_ray_sensor_;
 
-    /// \brief topic name
-    private: std::string topic_name_;
+  /// \brief pointer to ros node
+  ros::NodeHandle* rosnode_;
 
-    /// \brief frame transform name, should match link name
-    private: std::string frame_name_;
+  ros::Publisher pub_;
 
-    /// \brief radiation type : ultrasound or infrared
-//    private: std::string radiation_;
+  /// \brief ros message
+  sensor_msgs::Range range_msg_;
 
-    /// \brief sensor field of view
-    private: double fov_;
-    /// \brief Gaussian noise
-    private: double gaussian_noise_;
+  /// \brief topic name
+  std::string topic_name_;
 
-    /// \brief Gaussian noise generator
-    private: double GaussianKernel(double mu, double sigma);
+  /// \brief frame transform name, should match link name
+  std::string frame_name_;
 
-    /// \brief mutex to lock access to fields that are used in message callbacks
-    private: boost::mutex lock_;
+  /// \brief radiation type : ultrasound or infrared
+  //    std::string radiation_;
 
-    /// \brief hack to mimic hokuyo intensity cutoff of 100
-    private: double hokuyo_min_intensity_;
+  /// \brief sensor field of view
+  double fov_;
+  /// \brief Gaussian noise
+  double gaussian_noise_;
 
-    /// update rate of this sensor
-    private: double update_rate_;
-    private: double update_period_;
-    private: common::Time last_update_time_;
+  /// \brief Gaussian noise generator
+  double GaussianKernel(double mu, double sigma);
 
-    /// \brief for setting ROS name space
-    private: std::string robot_namespace_;
+  /// \brief mutex to lock access to fields that are used in message callbacks
+  boost::mutex lock_;
 
-    private: ros::CallbackQueue range_queue_;
-    private: void RangeQueueThread();
-    private: boost::thread callback_queue_thread_;
+  /// \brief hack to mimic hokuyo intensity cutoff of 100
+  double hokuyo_min_intensity_;
 
-    // deferred load in case ros is blocking
-    private: sdf::ElementPtr sdf;
-    private: void LoadThread();
-    private: boost::thread deferred_load_thread_;
-    private: unsigned int seed;
+  /// update rate of this sensor
+  double update_rate_;
+
+  double update_period_;
+
+  common::Time last_update_time_;
+
+  /// \brief for setting ROS name space
+  std::string robot_namespace_;
+
+  ros::CallbackQueue range_queue_;
+
+  void RangeQueueThread();
+
+  boost::thread callback_queue_thread_;
+
+  // deferred load in case ros is blocking
+  sdf::ElementPtr sdf;
+
+  void LoadThread();
+
+  boost::thread deferred_load_thread_;
+
+  unsigned int seed;
 };
-}
-#endif // INFRARED_RANGE_H
+}  // namespace gazebo
+#endif  // INFRARED_RANGE_H

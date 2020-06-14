@@ -21,7 +21,7 @@
                 <geometry>
                     <mesh>
                         <uri>
-                            model://robobo_gazebo/models/robobo/meshes/body_collision.dae
+                            model://robobo-gazebo-simulator-master/models/robobo/meshes/body_collision.dae
                         </uri>
                     </mesh>
                 </geometry>
@@ -45,7 +45,7 @@
                 <geometry>
                     <mesh>
                         <uri>
-                            model://robobo_gazebo/models/robobo/meshes/body_visual.dae
+                            model://robobo-gazebo-simulator-master/models/robobo/meshes/body_visual.dae
                         </uri>
                     </mesh>
                 </geometry>
@@ -302,7 +302,7 @@
                 <geometry>
                     <mesh>
                         <uri>
-                            model://robobo_gazebo/models/robobo/meshes/left_wheel_visual.dae
+                            model://robobo-gazebo-simulator-master/models/robobo/meshes/left_wheel_visual.dae
                         </uri>
                     </mesh>
                 </geometry>
@@ -350,7 +350,7 @@
                 <geometry>
                     <mesh>
                         <uri>
-                            model://robobo_gazebo/models/robobo/meshes/right_wheel_visual.dae
+                            model://robobo-gazebo-simulator-master/models/robobo/meshes/right_wheel_visual.dae
                         </uri>
                     </mesh>
                 </geometry>
@@ -381,7 +381,7 @@
                 <geometry>
                     <mesh>
                         <uri>
-                            model://robobo_gazebo/models/robobo/meshes/pan_visual.dae
+                            model://robobo-gazebo-simulator-master/models/robobo/meshes/pan_visual.dae
                         </uri>
                     </mesh>
                 </geometry>
@@ -413,7 +413,7 @@
                 <geometry>
                     <mesh>
                         <uri>
-                            model://robobo_gazebo/models/robobo/meshes/tilt_smartphone_visual.dae
+                            model://robobo-gazebo-simulator-master/models/robobo/meshes/tilt_smartphone_visual.dae
                         </uri>
                     </mesh>
                 </geometry>
@@ -421,21 +421,25 @@
             <sensor type="camera" name="front_camera">
                 <pose>0.0695 0.0105 0.004 0 -1.5708 3.1415</pose>
                 <visualize>false</visualize>
-                <camera>
+                <camera name="head">
                     <image>
                         <width>480</width>
                         <height>640</height>
                     </image>
                 </camera>
-                <plugin name="camera_controller1" filename="librobobo_camera_utils.so"/>
-                <plugin name="camera_controller2" filename="librobobo_camera.so">
+                 <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
                     <frameName>Camera</frameName>
+                    <alwaysOn>true</alwaysOn>
+                    <updateRate>20.0</updateRate>
+                    <cameraName>robot/camera</cameraName>
+                    <imageTopicName>image</imageTopicName>
+                    <cameraInfoTopicName>camera_info</cameraInfoTopicName>
                 </plugin>
             </sensor>
             <sensor name="imu_sensor" type="imu">
                 <visualize>false</visualize>
                 <plugin name="imu_plugin" filename="librobobo_imu_sensor.so">
-                    <topicName>imu</topicName>
+                    <!-- <topicName>imu</topicName> -->
                     <bodyName>imu_link</bodyName>
                     <updateRateHZ>10.0</updateRateHZ>
                     <gaussianNoise>0.0</gaussianNoise>
