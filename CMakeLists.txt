@@ -12,6 +12,9 @@ find_package(catkin REQUIRED COMPONENTS
 	rospy 
 )
 
+find_package(OpenCV)
+include_directories(${OpenCV_INCLUDE_DIRS})
+
 
 ## System dependencies
 find_package(GAZEBO REQUIRED)
@@ -40,8 +43,6 @@ catkin_package(
 	move_pan_tilt
 	encoders
 	infrared_range
-	robobo_camera_utils
-	robobo_camera
 	robobo_imu_sensor
 
 	CATKIN_DEPENDS
@@ -67,7 +68,7 @@ link_directories(${GAZEBO_LIBRARY_DIRS})
 # Plugin for MoveWheels service
 add_library(move_wheels SHARED plugins/move_wheels.cpp)
 add_dependencies(move_wheels ${catkin_EXPORTED_TARGETS})
-target_link_libraries(move_wheels ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
+target_link_libraries(move_wheels ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${GAZEBO_LIBRARIES})
 
 # Plugin for MovePanTilt service
 add_library(move_pan_tilt SHARED plugins/move_pan_tilt.cpp)
@@ -83,16 +84,6 @@ target_link_libraries(encoders ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
 add_library(infrared_range SHARED plugins/infrared_range.cpp)
 add_dependencies(infrared_range ${catkin_EXPORTED_TARGETS})
 target_link_libraries(infrared_range ${catkin_LIBRARIES} ${Boost_LIBRARIES} RayPlugin)
-
-# Camera utils plugin
-add_library(robobo_camera_utils SHARED plugins/robobo_camera_utils.cpp)
-add_dependencies(robobo_camera_utils ${catkin_EXPORTED_TARGETS})
-target_link_libraries(robobo_camera_utils ${catkin_LIBRARIES} ${Boost_LIBRARIES} CameraPlugin)
-
-# Camera plugin
-add_library(robobo_camera SHARED plugins/robobo_camera.cpp)
-add_dependencies(robobo_camera ${catkin_EXPORTED_TARGETS})
-target_link_libraries(robobo_camera ${catkin_LIBRARIES} ${Boost_LIBRARIES} CameraPlugin)
 
 # Imu sensor plugin
 add_library(robobo_imu_sensor SHARED plugins/robobo_imu_sensor.cpp)
@@ -117,8 +108,6 @@ install(
 	move_pan_tilt
 	encoders
 	infrared_range
-	robobo_camera_utils
-	robobo_camera
 	robobo_imu_sensor
 
 	ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}

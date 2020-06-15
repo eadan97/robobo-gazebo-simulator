@@ -1,6 +1,6 @@
 /*******************************************************************************
  *
- *   Copyright 2019, Manufactura de Ingenios Tecnológicos S.L. 
+ *   Copyright 2019, Manufactura de Ingenios Tecnológicos S.L.
  *   <http://www.mintforpeople.com>
  *
  *   Redistribution, modification and use of this software are permitted under
@@ -11,157 +11,151 @@
  *   warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  *   Apache 2.0 License for more details.
  *
- *   You should have received a copy of the Apache 2.0 License along with    
+ *   You should have received a copy of the Apache 2.0 License along with
  *   this software. If not, see <http://www.apache.org/licenses/>.
  *
  ******************************************************************************/
 
-/* This plugin is used to create the MoveWheels service to move wheels motors in the Gazebo model of Robobo
-/** \author David Casal. */
+// This plugin is used to create the MoveWheels service and topic to move wheels motors in the Gazebo model of Robobo
+// \author Esteban Esquivel
 
-#ifndef _MOVE_WHEELS_HH_
-#define _MOVE_WHEELS_HH_
-
-#include <gazebo/gazebo.hh>
-#include <gazebo/physics/physics.hh>
-
-#include <thread>
-#include "ros/ros.h"
-#include "robobo_msgs/MoveWheels.h"
-
+#include "robobo/move_wheels.h"
+#include "ros/advertise_options.h"
+#include "ros/advertise_service_options.h"
+#include "ros/subscribe_options.h"
+#include "std_msgs/Int16.h"
 
 namespace gazebo
 {
+// Register the plugin in Gazebo.
+GZ_REGISTER_MODEL_PLUGIN(MoveWheels)
 
-    class MoveWheels : public ModelPlugin
-    {
-
-        public: MoveWheels() {}
-
-        public: physics::JointControllerPtr jointController;
-
-        public: virtual void Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
-        {
-            // Safety check
-            if (_model->GetJointCount() == 0)
-            {
-            std::cerr << "Invalid joint count, model not loaded\n";
-            return;
-            }
-
-            this->model = _model;
-
-            // Initialize ros
-            if (!ros::isInitialized())
-            {
-                int argc = 0;
-                char **argv = NULL;
-                ros::init(argc, argv, "gazebo_client", ros::init_options::NoSigintHandler);
-            }
-
-            // Create node handler
-            this->rosNode.reset(new ros::NodeHandle("gazebo_client"));
-
-            // Create MoveWheels service
-            this->controlService = this->rosNode->advertiseService<robobo_msgs::MoveWheels::Request,
-                robobo_msgs::MoveWheels::Response>("/" + this->model->GetName() + "/moveWheels",
-                    boost::bind(&MoveWheels::Callback, this, _1, _2));
-
-        }
-
-        public: bool Callback(robobo_msgs::MoveWheels::Request &req, robobo_msgs::MoveWheels::Response &res)
-        {
-            // Save service parameter values
-            if (req.lspeed.data < -100){
-
-                this->lwp = -100;
-            }
-            else if (req.lspeed.data > 100)
-            {
-                this->lwp = 100;
-            }
-            else
-            {
-                this->lwp = req.lspeed.data;
-            }
-            if (req.rspeed.data < -100)
-            {
-                this->rwp = -100;
-            }
-            else if (req.rspeed.data > 100)
-            {
-                this->rwp = 100;
-            }
-            else
-            {
-                this->rwp = req.rspeed.data;
-            }
-            this->time = req.time.data / 1000;
-            this->MoveWheelsThread = std::thread(std::bind (&MoveWheels::Handle_MoveWheels, this));
-            this->MoveWheelsThread.detach();
-            return true;
-        }
-
-        private: void Handle_MoveWheels ()
-        {
-            double lspeedGazebo;
-            double rspeedGazebo;
-
-            // Use enough force to achieve the target velocity
-            this->model->GetJoint("right_motor")->SetParam("fmax", 0, 0.5);
-            this->model->GetJoint("left_motor")->SetParam("fmax", 0, 0.5);
-
-            // Calculate joints target velocity
-            lspeedGazebo = ((-4.625E-05 * pow(abs(this->lwp),3) + 5.219E-03 * pow(abs(this->lwp),2) + 6.357 * abs(this->lwp) + 5.137E+01) + (
-                     -3.253E-04 * pow(abs(this->lwp),3) + 4.285E-02 * pow(abs(this->lwp),2) + -2.064 * abs(this->lwp) - 1.770E+01) / this->time) * M_PI / 180;
-            if (this->lwp < 0)
-            {
-                lspeedGazebo = -lspeedGazebo;
-            }
-            else if (this->lwp == 0)
-            {
-                lspeedGazebo = 0;
-            }
-            rspeedGazebo = ((-4.625E-05 * pow(abs(this->rwp),3) + 5.219E-03 * pow(abs(this->rwp),2) +
-                    6.357 * abs(this->rwp) + 5.137E+01) + (-3.253E-04 * pow(abs(this->rwp),3) + 4.285E-02 *
-                        pow(abs(this->rwp),2) + -2.064 * abs(this->rwp) - 1.770E+01) / this->time) * M_PI / 180;
-            if (this->rwp < 0)
-            {
-                rspeedGazebo = - rspeedGazebo;
-            }
-            else if (this->rwp == 0 )
-            {
-                rspeedGazebo = 0;
-            }
-
-            // Set joints velocity
-            this->model->GetJoint("left_motor")->SetParam("vel", 0, lspeedGazebo);
-            this->model->GetJoint("right_motor")->SetParam("vel", 0, rspeedGazebo);
-            usleep(this->time * 1E6);
-            this->model->GetJoint("left_motor")->SetParam("vel", 0, double(0));
-            this->model->GetJoint("right_motor")->SetParam("vel", 0, double(0));
-        }
-
-        /// \brief Pointer to the model.
-        private: physics::ModelPtr model;
-
-        /// \brief A node use for ROS transport
-        private: std::unique_ptr<ros::NodeHandle> rosNode;
-
-        /// \brief A thread the keeps running velocity setting
-        private: std::thread MoveWheelsThread;
-
-        /// \brief A ROS service server
-        private: ros::ServiceServer controlService;
-
-        // MoveWheels parameters
-        private: int lwp;
-        private: int rwp;
-        private: float time;
-
-    };
-
-    // Tell Gazebo about this plugin, so that Gazebo can call Load on this plugin.
-    GZ_REGISTER_MODEL_PLUGIN(MoveWheels)
+// Constructor
+MoveWheels::MoveWheels()
+{
 }
-#endif
+
+// Deconstructor
+MoveWheels::~MoveWheels()
+{
+}
+
+// When plugin is loaded
+void MoveWheels::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
+{
+  // Safety check
+  if (_model->GetJointCount() == 0)
+  {
+    std::cerr << "Invalid joint count, model not loaded\n";
+    return;
+  }
+
+  model = _model;
+
+  // Initialize ros
+  if (!ros::isInitialized())
+  {
+    int argc = 0;
+    char **argv = NULL;
+    ros::init(argc, argv, model->GetName(), ros::init_options::NoSigintHandler);
+  }
+
+  // Create node handler
+  rosNode.reset(new ros::NodeHandle(model->GetName()));
+
+  // Create MoveWheels service
+  ros::AdvertiseServiceOptions advSerOpt = ros::AdvertiseServiceOptions::create<robobo_msgs::MoveWheels>(
+      "robot/moveWheels", boost::bind(&MoveWheels::ServiceCallback, this, _1, _2), ros::VoidPtr(), &this->rosQueue);
+  moveWheelsService = rosNode->advertiseService(advSerOpt);
+
+  // MoveWheels Subscriber
+  ros::SubscribeOptions subOpt = ros::SubscribeOptions::create<robobo_msgs::MoveWheelsCommand>(
+      "robot/moveWheels", 10, boost::bind(&MoveWheels::TopicCallback, this, _1), ros::VoidPtr(), &this->rosQueue);
+  moveWheelsSubscriber = rosNode->subscribe(subOpt);
+
+  // BlockId Publisher
+  blockPub = rosNode->advertise<std_msgs::Int16>("robot/unlock/move", 10);
+
+  // Queue thread
+  this->rosQueueThread = std::thread(std::bind(&MoveWheels::QueueThread, this));
+}
+
+bool MoveWheels::ServiceCallback(robobo_msgs::MoveWheels::Request &req, robobo_msgs::MoveWheels::Response &res)
+{
+  int8_t lspeed = (req.lspeed.data < -100) ? -100 : (100 < req.lspeed.data) ? 100 : req.lspeed.data;
+  int8_t rspeed = (req.rspeed.data < -100) ? -100 : (100 < req.rspeed.data) ? 100 : req.rspeed.data;
+  float time = req.time.data / 1000.0;
+  moveWheelsThread =
+      std::thread(std::bind(&MoveWheels::HandleMoveWheels, this, lspeed, rspeed, time, req.unlockid.data));
+  moveWheelsThread.detach();
+  return true;
+}
+
+void MoveWheels::TopicCallback(const boost::shared_ptr<robobo_msgs::MoveWheelsCommand const> &req)
+{
+  int8_t lspeed = (req->lspeed.data < -100) ? -100 : (100 < req->lspeed.data) ? 100 : req->lspeed.data;
+  int8_t rspeed = (req->rspeed.data < -100) ? -100 : (100 < req->rspeed.data) ? 100 : req->rspeed.data;
+  float time = req->time.data / 1000.0;
+  moveWheelsThread =
+      std::thread(std::bind(&MoveWheels::HandleMoveWheels, this, lspeed, rspeed, time, req->unlockid.data));
+  moveWheelsThread.detach();
+}
+
+// Function that controlls the wheels, this should be called from the callbacks
+// TODO: calculate again the formula to simulate the velocity.
+void MoveWheels::HandleMoveWheels(int8_t lwp, int8_t rwp, float time, int16_t blockid)
+{
+  double lspeedGazebo = 0, rspeedGazebo = 0;
+  int8_t abs_lwp = abs(lwp), abs_rwp = abs(rwp);
+
+  // Set torque/force
+  model->GetJoint("right_motor")->SetParam("fmax", 0, 0.5);
+  model->GetJoint("left_motor")->SetParam("fmax", 0, 0.5);
+
+  // Calculate joints target velocity
+  if (lwp != 0)
+  {
+    lspeedGazebo =
+        ((-4.625E-05 * pow(abs_lwp, 3) + 5.219E-03 * pow(abs_lwp, 2) + 6.357 * abs_lwp + 5.137E+01) +
+         (-3.253E-04 * pow(abs_lwp, 3) + 4.285E-02 * pow(abs_lwp, 2) + -2.064 * abs_lwp - 1.770E+01) / time) *
+        M_PI / 180;
+    if (lwp < 0)
+      lspeedGazebo = -lspeedGazebo;
+  }
+
+  if (rwp != 0)
+  {
+    rspeedGazebo =
+        ((-4.625E-05 * pow(abs_rwp, 3) + 5.219E-03 * pow(abs_rwp, 2) + 6.357 * abs_rwp + 5.137E+01) +
+         (-3.253E-04 * pow(abs_rwp, 3) + 4.285E-02 * pow(abs_rwp, 2) + -2.064 * abs_rwp - 1.770E+01) / time) *
+        M_PI / 180;
+    if (rwp < 0)
+      rspeedGazebo = -rspeedGazebo;
+  }
+
+  // Set joints velocity
+  model->GetJoint("left_motor")->SetParam("vel", 0, lspeedGazebo);
+  model->GetJoint("right_motor")->SetParam("vel", 0, rspeedGazebo);
+  usleep(time * 1E6);
+  model->GetJoint("left_motor")->SetParam("vel", 0, double(0));
+  model->GetJoint("right_motor")->SetParam("vel", 0, double(0));
+  model->GetJoint("right_motor")->SetParam("fmax", 0, 0);
+  model->GetJoint("left_motor")->SetParam("fmax", 0, 0);
+  if (blockPub.getNumSubscribers() > 0)
+  {
+    std_msgs::Int16 unblockId;
+    unblockId.data = blockid;
+    blockPub.publish(unblockId);
+    ros::spinOnce();
+  }
+}
+
+void MoveWheels::QueueThread()
+{
+  static const double timeout = 0.01;
+  while (this->rosNode->ok())
+  {
+    this->rosQueue.callAvailable(ros::WallDuration(timeout));
+  }
+}
+}  // namespace gazebo
