@@ -8,9 +8,13 @@
 	</include>
 
 	<!-- You can spawn your own model here -->
-	<node name="robot" pkg="gazebo_ros" type="spawn_model" args="-file $(find robobo_gazebo)/models/robobo/model.sdf -sdf -x 0.05 -y -0.0 -z 0.0 -Y -0.4 -model robot" />
-	<arg name="robobo_name" default="robot"/>
-	<node name="robot_irs" pkg="robobo_gazebo" type="robobo_irs" args="-n $(arg robobo_name)"/>
+	<group ns="robot">
+		<param name="tf_prefix" value="robot_tf" />
+		<arg name="robobo_name" default="robot"/>
+		<node name="robobo_model" pkg="gazebo_ros" type="spawn_model" args="-file $(find robobo_gazebo)/models/robobo/model.sdf -sdf -x 0.0 -y -0.0 -z 0.0 -Y -3.14159 -model $(arg robobo_name)" />
+		<node name="robobo_irs" pkg="robobo_gazebo" type="robobo_irs" args="-n $(arg robobo_name)"/>
+	</group>
+
 
 	<!-- Box for IRS calibrations
 	<node name="box" pkg="gazebo_ros" type="spawn_model" args="-file $(find robobo_gazebo)/models/box/box.sdf -sdf -x -0.05 -y -0.12625 -z 0.0 -Y 0.0 -model box" />-->
