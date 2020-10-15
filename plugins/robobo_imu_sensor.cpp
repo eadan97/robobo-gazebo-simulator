@@ -33,7 +33,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.*/
 
-#include "robobo/robobo_imu_sensor.h"
+#include "include/robobo/robobo_imu_sensor.h"
 
 namespace gazebo
 {

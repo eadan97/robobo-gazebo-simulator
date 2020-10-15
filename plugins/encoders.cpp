@@ -19,7 +19,7 @@
 /* This plugin is used to publish the encoders values of the Gazebo model of Robobo and to create the ResetWheels
 service to reset wheel position values*/
 
-#include "robobo/encoders.h"
+#include "include/robobo/encoders.h"
 
 namespace gazebo
 {
@@ -57,9 +57,7 @@ void Encoders::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
   // Create node handler
   rosNode.reset(new ros::NodeHandle(model->GetName()));
 
-  // Subscribe to Gazebo link states topic
-  //   ros::SubscribeOptions so = ros::SubscribeOptions::create<gazebo_msgs::LinkStates>(
-  //   "/gazebo/link_states", 1, boost::bind(&Encoders::Callback, this, _1), ros::VoidPtr(), &rosQueue);
+  // Subscribe to Gazebo link states topic/
   connection = event::Events::ConnectWorldUpdateBegin(boost::bind(&Encoders::Callback, this, _1));
 
   // Create topics to publish
@@ -68,12 +66,10 @@ void Encoders::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
   pubTilt = rosNode->advertise<std_msgs::Int16>("robot/tilt", 1);
 
   // Declare the node as a subscriber
-  //   linkStatesSub = rosNode->subscribe(so);
-
   rosQueueThread = std::thread(std::bind(&Encoders::QueueThread, this));
+
   // Create ResetWheels service
-  resetService = rosNode->advertiseService<robobo_msgs::ResetWheels::Request, robobo_msgs::ResetWheels::Response>(
-      "robot/resetWheels", boost::bind(&Encoders::CallbackResetWheels, this, _1, _2));
+  resetService = rosNode->advertiseService<robobo_msgs::ResetWheels::Request, robobo_msgs::ResetWheels::Response>("robot/resetWheels", boost::bind(&Encoders::CallbackResetWheels, this, _1, _2));
   resetWheelsSub = rosNode->subscribe("robot/resetWheelsCommand", 2, &Encoders::ResetWheelsTopicCallback, this);
 }
 

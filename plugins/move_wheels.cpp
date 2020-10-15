@@ -19,7 +19,7 @@
 // This plugin is used to create the MoveWheels service and topic to move wheels motors in the Gazebo model of Robobo
 // \author Esteban Esquivel
 
-#include "robobo/move_wheels.h"
+#include "include/robobo/move_wheels.h"
 #include "ros/advertise_options.h"
 #include "ros/advertise_service_options.h"
 #include "ros/subscribe_options.h"

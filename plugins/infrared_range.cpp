@@ -35,7 +35,7 @@
 /** \author Jose Capriles, Bence Magyar. */
 
 #include "gazebo_plugins/gazebo_ros_utils.h"
-#include "robobo/infrared_range.h"
+#include "include/robobo/infrared_range.h"
 
 namespace gazebo
 {
@@ -77,8 +77,6 @@ void InfraredRange::Load(sensors::SensorPtr _parent, sdf::ElementPtr _sdf)
 
   this->topic_name_ = "robot/" + sensorName;
 
-  // ROS_WARN_NAMED("DEBUG", "%s - %s - %s",sensorName.c_str(),nodeNameFull.c_str(),topic_name_.c_str());
-
   // save pointers
   this->sdf = _sdf;
 
@@ -91,9 +89,6 @@ void InfraredRange::Load(sensors::SensorPtr _parent, sdf::ElementPtr _sdf)
     gzthrow("InfraredRange controller requires a Ray Sensor as its parent");
 
   this->robot_namespace_ = GetRobotNamespace(_parent, _sdf, "Infrared Range");
-  // if (this->sdf->HasElement("robotNamespace"))
-  // this->robot_namespace_ = this->sdf->Get<std::string>("robotNamespace");
-  ROS_WARN_NAMED("debug", "robot namespace: %s", robot_namespace_.c_str());
 
   if (!this->sdf->HasElement("frameName"))
   {
@@ -139,9 +134,6 @@ void InfraredRange::Load(sensors::SensorPtr _parent, sdf::ElementPtr _sdf)
   this->range_connect_count_ = 0;
 
   this->range_msg_.header.frame_id = this->frame_name_;
-  //        if (this->radiation_==std::string("ultrasound"))
-  //         this->range_msg_.radiation_type = sensor_msgs::Range::ULTRASOUND;
-  //        else
   this->range_msg_.radiation_type = sensor_msgs::Range::INFRARED;
 
   this->range_msg_.field_of_view = fov_;
@@ -271,11 +263,6 @@ void InfraredRange::PutRangeData(common::Time &_updateTime)
     }
 
     range_msg_.range = ir_value + this->GaussianKernel(0, gaussian_noise_);
-
-    // add Gaussian noise and limit to min/max range
-    //        if (range_msg_.range < range_msg_.max_range)
-    //            range_msg_.range = std::min(range_msg_.range + this->GaussianKernel(0,gaussian_noise_),
-    //            parent_ray_sensor_->RangeMax());
 
     this->parent_ray_sensor_->SetActive(true);
 

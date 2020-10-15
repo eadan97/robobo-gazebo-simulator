@@ -18,7 +18,7 @@
 
 // This plugin is used to create the MovePanTilt service to move pan and tilt motors in the Gazebo model of Robobo
 
-#include "robobo/move_pan_tilt.h"
+#include "include/robobo/move_pan_tilt.h"
 
 namespace gazebo
 {
