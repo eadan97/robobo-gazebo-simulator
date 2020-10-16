@@ -17,7 +17,7 @@ Clone the respository in your own workspace and compile:
 ```bash
 $ cd <catkin_ws>/src
 $ git clone https://github.com/mintforpeople/robobo-gazebo-simulator
-$ git clone https://github.com/mintforpeople/robobo-ros-msgs/tree/master/robobo_msgs
+$ git clone https://github.com/mintforpeople/robobo-ros-msgs
 $ catkin_make
 ```
 
