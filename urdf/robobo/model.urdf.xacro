@@ -50,44 +50,52 @@
 			<material>
 				<script>
 					<uri> file://materials/scripts/emotion.material</uri>
-					<xacro:if value="${emotion_link=='afraid'}">
-					<name>emotion/afraid</name>
-					</xacro:if>
-
-					<xacro:if value="${emotion_link=='angry'}">
-					<name>emotion/angry</name>
-					</xacro:if>
-
-					<xacro:if value="${emotion_link=='laughting'}">
-					<name>emotion/laughting</name>
-					</xacro:if>
-
-					<xacro:if value="${emotion_link=='normal'}">
+					<xacro:if value="${emotion_link=='HAPPY'}">
 					<name>emotion/normal</name>
 					</xacro:if>
 
-					<xacro:if value="${emotion_link=='sad'}">
+					<xacro:if value="${emotion_link=='SAD'}">
 					<name>emotion/sad</name>
 					</xacro:if>
 
-					<xacro:if value="${emotion_link=='sleeping'}">
-					<name>emotion/sleeping</name>
+					<xacro:if value="${emotion_link=='ANGRY'}">
+					<name>emotion/angry</name>
 					</xacro:if>
 
-					<xacro:if value="${emotion_link=='smile'}">
+					<xacro:if value="${emotion_link=='SMYLING'}">
 					<name>emotion/smile</name>
 					</xacro:if>
 
-					<xacro:if value="${emotion_link=='surprised'}">
+					<xacro:if value="${emotion_link=='LAUGHTING'}">
+					<name>emotion/laughting</name>
+					</xacro:if>
+
+					<xacro:if value="${emotion_link=='EMBARRASSED'}">
+					<name>emotion/very_surprised</name>
+					</xacro:if>
+
+					<xacro:if value="${emotion_link=='SURPRISED'}">
 					<name>emotion/surprised</name>
 					</xacro:if>
 
-					<xacro:if value="${emotion_link=='tired'}">
-					<name>emotion/tired</name>
+					<xacro:if value="${emotion_link=='IN_LOVE'}">
+					<name>emotion/smile</name>
 					</xacro:if>
 
-					<xacro:if value="${emotion_link=='very_surprised'}">
-					<name>emotion/very_surprised</name>
+					<xacro:if value="${emotion_link=='NORMAL'}">
+					<name>emotion/normal</name>
+					</xacro:if>
+
+					<xacro:if value="${emotion_link=='SLEEPING'}">
+					<name>emotion/sleeping</name>
+					</xacro:if>
+
+					<xacro:if value="${emotion_link=='AFRAID'}">
+					<name>emotion/afraid</name>
+					</xacro:if>
+
+					<xacro:if value="${emotion_link=='TIRED'}">
+					<name>emotion/tired</name>
 					</xacro:if>
 
 				</script>
@@ -361,16 +369,16 @@
 		<inertial>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<mass value="0.6" />
-			<inertia ixx="0.000485229" ixy="0.000000058" ixz="0.000013696" iyy="0.001227181" iyz="-0.000000029" izz="0.001452813"/>
+			<inertia ixx="0.000485229" ixy="0" ixz="0" iyy="0.001227181" iyz="0" izz="0.001452813"/>
 		</inertial>
 		<visual>
-			<origin xyz="-0.055984 0.034729 0.0308" rpy="0 0 0"/>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
 				<mesh filename="package://robobo_gazebo/meshes/body_visual.dae" />
 			</geometry>
 		</visual>
 		<collision>
-			<origin xyz="-0.055984 0.034729 0.0308" rpy="0 0 0"/>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
 				<mesh filename="package://robobo_gazebo/meshes/body_collision.dae" />
 			</geometry>
@@ -384,7 +392,7 @@
 			<inertial>
 				<origin xyz="0 0 0" rpy="0 0 0" />
 				<mass value="0.046"/>
-				<inertia ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667"/>
+				<inertia ixx="0.000166667" ixy="0" ixz="0" iyy="0.000166667" iyz="0" izz="0.000166667"/>
 			</inertial>
 			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0" />
@@ -422,7 +430,7 @@
 		<joint name="pusher_join" type="fixed">
 			<parent link="body" />
 			<child link="pusher_link"/>
-			<origin xyz="-0.098484 0.034729 0.0051" rpy="0 0 1.5708"/>
+			<origin xyz="-0.0425 0 -0.0257" rpy="0 0 1.5708"/>
 			<axis xyz="0 -1 0"/>
 		</joint>
 	</xacro:if>
@@ -430,7 +438,7 @@
 	<!--Left wheel link-->
 	<link name="left_wheel">
 		<inertial>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0 0.002 0" rpy="0 0 0" />
 			<mass value="0.046"/>
 			<inertia ixx="0.000014552" ixy="0" ixz="0" iyy="0.000023921" iyz="0" izz="0.000014552"/>
 		</inertial>
@@ -441,7 +449,7 @@
 			</geometry>
 		</visual>
 		<collision>
-			<origin xyz="0 0 0" rpy="1.5708 0 0" />
+			<origin xyz="0 0.002 0" rpy="1.5707963267948966 0 0" />
 			<geometry>
 				<cylinder radius="0.03225" length="0.026"/>
 			</geometry>
@@ -451,12 +459,12 @@
 	<!--Right wheel link-->
 	<link name="right_wheel">
 		<inertial>
-			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<origin xyz="0 -0.002 0" rpy="0 0 0"/>
 			<mass value="0.046"/>
 			<inertia ixx="0.000014552" ixy="0" ixz="0" iyy="0.000023921" iyz="0" izz="0.000014552"/>
 		</inertial>
 		<collision>
-			<origin xyz="0 0 0" rpy="1.5708 0 0"/>
+			<origin xyz="0 -0.002 0" rpy="1.5707963267948966 0 0"/>
 			<geometry>
 				<cylinder radius="0.03225" length="0.026"/>
 			</geometry>
@@ -491,48 +499,45 @@
 	</link>
 
 	<!--Infrared sensor plugin-->
-	<xacro:infrared_link name="front_c" xyz="-0.136284 0.034729 0.031" rpy="0 0 3.1415"/> 
-	<xacro:infrared_link name="front_l" xyz="-0.128684 0.008729 0.032" rpy="0 0.21 3.526"/> 
-
-	<xacro:infrared_link name="front_ll" xyz="-0.118484 -0.005771 0.032" rpy="0 0 3.927"/> 
-	<xacro:infrared_link name="front_r" xyz="-0.128684 0.060729 0.032" rpy="0 0.21 2.758"/> 
-
-	<xacro:infrared_link name="front_rr" xyz="-0.118484 0.075229 0.032" rpy="0 0 2.356"/> 
-	<xacro:infrared_link name="back_c" xyz="0.064116 0.034729 0.0308" rpy="0 0.21 0"/> 
-
-	<xacro:infrared_link name="back_l" xyz="0.049516 0.003929 0.0318" rpy="0 0 -0.524"/> 
-	<xacro:infrared_link name="back_r" xyz="0.049516 0.065529 0.0318" rpy="0 0 0.524"/> 
+	<xacro:infrared_link name="front_c" xyz="-0.0803 0 0.0002" rpy="0 0 3.1415"/> 
+	<xacro:infrared_link name="front_l" xyz="-0.0727 -0.026 0.0012" rpy="0 0.21 3.526"/> 
+	<xacro:infrared_link name="front_ll" xyz="-0.0625 -0.0405 0.0012" rpy="0 0 3.927"/> 
+	<xacro:infrared_link name="front_r" xyz="-0.0727 0.026 0.0012" rpy="0 0.21 2.758"/> 
+	<xacro:infrared_link name="front_rr" xyz="-0.0625 0.0405 0.0012" rpy="0 0 2.356"/> 
+	<xacro:infrared_link name="back_c" xyz="0.1201 0 0" rpy="0 0.21 0"/> 
+	<xacro:infrared_link name="back_l" xyz="0.1055 -0.0308 0.001" rpy="0 0 -0.524"/> 
+	<xacro:infrared_link name="back_r" xyz="0.1055 0.0308 0.001" rpy="0 0 0.524"/> 
 
 
 	<!--Infrared sensor plugin-->
 	<xacro:infrared name="front_c" visualize="${visualize_sensor}">
-		<pose>-0.136284 0.034729 0.031 0 0 3.1415</pose>
+		<pose>-0.0803 0 0.0002 0 0 3.1415</pose>
 	</xacro:infrared>
 	<xacro:infrared name="front_l" visualize="${visualize_sensor}">
-		<pose>-0.128684 0.008729 0.032 0 0.21 3.526</pose>
+		<pose>-0.0727 -0.026 0.0012 0 0.21 3.526</pose>
 	</xacro:infrared>
 	<xacro:infrared name="front_ll" visualize="${visualize_sensor}">
-		<pose>-0.118484 -0.005771 0.032 0 0 3.927</pose>
+		<pose>-0.0625 -0.0405 0.0012 0 0 3.927</pose>
 	</xacro:infrared>
 	<xacro:infrared name="front_r" visualize="${visualize_sensor}">
-		<pose>-0.128684 0.060729 0.032 0 0.21 2.758</pose>
+		<pose>-0.0727 0.026 0.0012 0 0.21 2.758</pose>
 	</xacro:infrared>
 	<xacro:infrared name="front_rr" visualize="${visualize_sensor}">
-		<pose>-0.118484 0.075229 0.032 0 0 2.356</pose>
+		<pose>-0.0625 0.0405 0.0012 0 0 2.356</pose>
 	</xacro:infrared>
 	<xacro:infrared name="back_c" visualize="${visualize_sensor}">
-		<pose>0.064116 0.034729 0.0308 0 0.21 0</pose>
+		<pose>0.1201 0 0 0 0.21 0</pose>
 	</xacro:infrared>
 	<xacro:infrared name="back_l" visualize="${visualize_sensor}">
-		<pose>0.049516 0.003929 0.0318 0 0 -0.524</pose>
+		<pose>0.1055 -0.0308 0.001 0 0 -0.524</pose>
 	</xacro:infrared>
 	<xacro:infrared name="back_r" visualize="${visualize_sensor}">
-		<pose>0.049516 0.065529 0.0318 0 0 0.524</pose>
+		<pose>0.1055 0.0308 0.001 0 0 0.524</pose>
 	</xacro:infrared>
 
 
 	<!--GAZEBO physic-->
-	<gazebo_physics_dynamic parent="body" mu="0.2" mu2="0.2" p_ratio="0.46" e_modulus="7e8" min_depth="0.0004"/>
+	<gazebo_physics_dynamic parent="body" mu="0.05" mu2="0.05" p_ratio="0.46" e_modulus="7e8" min_depth="0.0004"/>
 	<gazebo_physics_dynamic parent="left_wheel" mu="0.8" mu2="0.8" p_ratio="0.5" e_modulus="7e6" min_depth="0.0008"/>
 	<gazebo_physics_dynamic parent="right_wheel" mu="0.8" mu2="0.8" p_ratio="0.5" e_modulus="7e6" min_depth="0.0008"/>
 	<gazebo_physics_dynamic parent="pan" mu="0.8" mu2="0.8" p_ratio="0.5" e_modulus="7e6" min_depth="0.0008"/>
@@ -540,7 +545,7 @@
 
 	<!-- JOINTS -->
 	<joint name="left_motor" type="continuous">
-		<origin xyz="-0.082628 -0.040496 0.03225" rpy="0 0 0"/>
+		<origin xyz="-0.026644 -0.075225 0.00145" rpy="0 0 0"/>
 		<parent link="body"/>
 		<child link="left_wheel"/>
 		<axis xyz="0 -1 0"/>
@@ -549,7 +554,7 @@
 	</joint>
 
 	<joint name="right_motor" type="continuous">
-		<origin xyz="-0.082628 0.10746 0.03225" rpy="0 0 0"/>
+		<origin xyz="-0.026644 0.075225 0.00145" rpy="0 0 0"/>
 		<parent link="body"/>
 		<child link="right_wheel"/>
 		<axis xyz="0 -1 0" />
@@ -560,7 +565,7 @@
 	<joint name="pan_motor" type="revolute">
 		<parent link="body"/>
 		<child link="pan"/>
-		<origin xyz="-0.059743 0.034729 0.060151" rpy="0 0 3.1415"/>
+		<origin xyz="-0.003759 0 0.029351" rpy="0 0 3.1415"/>
 		<axis xyz="0 0 -1"/>
 		<limit lower="-3.14" upper="3.14" effort="5" velocity="1" />
 		<dynamics friction="0.15"/>

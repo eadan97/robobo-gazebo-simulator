@@ -102,7 +102,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/Table_goi.stl</uri>
+              <uri>file://models/stl/Table_goi.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -129,7 +129,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/Table_goi.stl</uri>
+              <uri>file://models/stl/Table_goi.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -206,7 +206,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/box_blender.stl</uri>
+              <uri>file://models/stl/box_blender.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -233,7 +233,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/box_blender.stl</uri>
+              <uri>file://models/stl/box_blender.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -310,7 +310,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/box_blender.stl</uri>
+              <uri>file://models/stl/box_blender.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -337,7 +337,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/box_blender.stl</uri>
+              <uri>file://models/stl/box_blender.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -414,7 +414,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/ARUCOS/00/aruco_0.dae</uri>
+              <uri>file://models/stl/ARUCOS/00/aruco_0.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -427,7 +427,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/ARUCOS/00/aruco_0.dae</uri>
+              <uri>file://models/stl/ARUCOS/00/aruco_0.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -504,7 +504,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/ARUCOS/01/aruco_01.dae</uri>
+              <uri>file://models/stl/ARUCOS/01/aruco_01.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -517,7 +517,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/ARUCOS/01/aruco_01.dae</uri>
+              <uri>file://models/stl/ARUCOS/01/aruco_01.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -594,7 +594,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/ARUCOS/02/aruco_02.dae</uri>
+              <uri>file://models/stl/ARUCOS/02/aruco_02.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -607,7 +607,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/ARUCOS/02/aruco_02.dae</uri>
+              <uri>file://models/stl/ARUCOS/02/aruco_02.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -912,7 +912,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/cylinder_big.stl</uri>
+              <uri>file://models/stl/cylinder_big.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -939,7 +939,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/cylinder_big.stl</uri>
+              <uri>file://models/stl/cylinder_big.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -1016,7 +1016,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/cube_blend.stl</uri>
+              <uri>file://models/stl/cube_blend.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -1043,7 +1043,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/cube_blend.stl</uri>
+              <uri>file://models/stl/cube_blend.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -1120,7 +1120,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/cylinder_medium.stl</uri>
+              <uri>file://models/stl/cylinder_medium.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -1147,7 +1147,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/cylinder_medium.stl</uri>
+              <uri>file://models/stl/cylinder_medium.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>

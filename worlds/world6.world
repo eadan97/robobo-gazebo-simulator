@@ -120,7 +120,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/ground/ground.dae</uri>
+              <uri>file://models/stl/ground/ground.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -133,7 +133,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/ground/ground.dae</uri>
+              <uri>file://models/stl/ground/ground.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -267,7 +267,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/labyrinth/laberinto.dae</uri>
+              <uri>file://models/stl/labyrinth/laberinto.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -280,7 +280,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://robobo_description/models/stl/labyrinth/laberinto.dae</uri>
+              <uri>file://models/stl/labyrinth/laberinto.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>

@@ -44,9 +44,9 @@ void MovePanTilt::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
   model = _model;
 
   // Set pan and tilt initial positions
-  model->GetJoint("tilt_motor")->SetPosition(0, 1.22);
-  model->GetJoint("tilt_motor")->SetLowStop(0, 1.22);
-  model->GetJoint("tilt_motor")->SetHighStop(0, 1.22);
+  model->GetJoint("tilt_motor")->SetPosition(0, 70*M_PI/180);
+  model->GetJoint("tilt_motor")->SetLowStop(0, 70*M_PI/180);
+  model->GetJoint("tilt_motor")->SetHighStop(0, 70*M_PI/180);
   model->GetJoint("pan_motor")->SetPosition(0, M_PI);
   model->GetJoint("pan_motor")->SetLowStop(0, M_PI);
   model->GetJoint("pan_motor")->SetHighStop(0, M_PI);
