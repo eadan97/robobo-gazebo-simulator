@@ -7,7 +7,7 @@
 	</include>
 
 
-	<group ns="robot>
+	<group ns="robot">
 	<!--create a new robobo-->
 	<group ns="robobo1">
 		
@@ -49,7 +49,7 @@
 			visualize_camera:=false" />
 
 		<!--launch robobo model-->
-		<node name="robobo_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -x 0 -y 0 -z 0 -R 0 -P 0 -Y 0  -model $(arg robobo_name) summit -param robot_description"/>
+		<node name="robobo_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -x 1 -y 0 -z 0 -R 0 -P 0 -Y 0  -model $(arg robobo_name) summit -param robot_description"/>
 
 		<!--launch infrared sensors-->
 		<node name="robobo_irs" pkg="robobo_gazebo" type="robobo_irs" args="-n $(arg robobo_name)"/>
