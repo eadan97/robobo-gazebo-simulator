@@ -97,8 +97,8 @@ void Encoders::Callback(const common::UpdateInfo &)
       // Save data in Wheels msg
       msgWheels.wheelPosR.data = rightWheelPos;
       msgWheels.wheelSpeedR.data = rightWheelVel;
-      msgWheels.wheelPosL.data = rightWheelPos;
-      msgWheels.wheelSpeedL.data = rightWheelVel;
+      msgWheels.wheelPosL.data = leftWheelPos;
+      msgWheels.wheelSpeedL.data = leftWheelVel;
       // Publish msg in topic
       pubWheels.publish(msgWheels);
     }
