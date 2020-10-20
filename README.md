@@ -40,18 +40,18 @@ To interact with the model you have the following ROS topics and services. They 
 
 Topics availables:
 
-* /\<modelName\>/robot/moveWheels
-* /\<modelName\>/robot/resetWheels
-* /\<modelName\>/robot/movePanTilt
-* /\<modelName\>/robot/unlock/move
-* /\<modelName\>/robot/accel
-* /\<modelName\>/robot/camera/camera_info
-* /\<modelName\>/robot/camera/image/compressed
-* /\<modelName\>/robot/irs
-* /\<modelName\>/robot/orientation
-* /\<modelName\>/robot/pan
-* /\<modelName\>/robot/tilt
-* /\<modelName\>/robot/wheels
+* /robot/\<modelName\>/moveWheels
+* /robot/\<modelName\>/resetWheels
+* /robot/\<modelName\>/movePanTilt
+* /robot/\<modelName\>/unlock/move
+* /robot/\<modelName\>/accel
+* /robot/\<modelName\>/camera/camera_info
+* /robot/\<modelName\>/camera/image/compressed
+* /robot/\<modelName\>/irs
+* /robot/\<modelName\>/orientation
+* /robot/\<modelName\>/pan
+* /robot/\<modelName\>/tilt
+* /robot/\<modelName\>/wheels
 
 Services availables:
 
