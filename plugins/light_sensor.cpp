@@ -49,8 +49,6 @@ namespace gazebo
     this->topic_name_ = sensorName;
     this->robot_namespace_ = GetRobotNamespace(_parent, _sdf, "Illuminance");
 
-    printf("%s",robot_namespace_);
-
     this->_nh = new ros::NodeHandle(this->robot_namespace_);
 
     //this->_sensorPublisher = this->_nh->advertise<sensor_msgs::Illuminance>(topic_name_, 1);
